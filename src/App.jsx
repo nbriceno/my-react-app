@@ -61,9 +61,11 @@ export default function Game() {
     setHistory([...history, nextSquares]);
     setXIsNext(!xIsNext);
   }
+
   function jumpTo(nextMove) {
     // TODO
   }
+
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
@@ -72,7 +74,7 @@ export default function Game() {
       description = 'Go to game start';
     }
     return (
-      <li>
+      <li key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
@@ -85,7 +87,6 @@ export default function Game() {
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
-
       </div>
     </div>
   );
@@ -110,3 +111,4 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
